@@ -22,6 +22,6 @@ jobs:
       with:
         url: "http://5927463d.ngrok.io/"
         user: "adarsh"
-        token: ${{ 11180a2a8018215bf0cc84971d513af6e4.TOKEN }}
+        token: ${{ secrets.TOKEN }}
         job: "job1"
  
