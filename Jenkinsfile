@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git 'https://github.com/theadarshsaxena/hello-world'
+        echo 'checkout complete'
       }
     }
 
