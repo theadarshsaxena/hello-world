@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git(url: 'https://github.com/theadarshsaxena/hello-world', poll: true)
+        git 'https://github.com/theadarshsaxena/hello-world'
       }
     }
 
