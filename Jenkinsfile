@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo 'sucess'
         sh '''pwd
-sudo cp -r -v- -f * /jendata'''
+sudo cp -r -v -f * /jendata'''
       }
     }
 
