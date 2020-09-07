@@ -16,7 +16,7 @@ sudo cp -r -v -f * /jendata'''
 then
   echo "success"
 else
-  return 0
+  exit 0
 fi'''
           }
         }
