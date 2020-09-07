@@ -14,7 +14,7 @@ sudo cp -r -v -f * /jendata'''
           steps {
             sh '''if ls /jendata | grep hello-world.txt
 then
-  echo "success"
+  exit 1
 else
   exit 0
 fi'''
