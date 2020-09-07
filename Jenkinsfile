@@ -4,7 +4,8 @@ pipeline {
     stage('build') {
       steps {
         echo 'sucess'
-        sh 'pwd'
+        sh '''pwd
+sudo cp -r -v- -f * /jendata'''
       }
     }
 
