@@ -24,13 +24,6 @@ fi'''
       }
     }
 
-    stage('Status Check') {
-      steps {
-        echo 'Success'
-        emailext(subject: 'Your Status Check', body: 'Your module is deployed sucecessfully', attachLog: true, to: 'adarshforcs@gmail.com')
-      }
-    }
-
     stage('Deploying') {
       steps {
         sh '''if sudo kubectl get pvc | grep my-httpd-pvc
