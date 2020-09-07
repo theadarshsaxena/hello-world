@@ -12,7 +12,7 @@ sudo cp -r -v -f * /jendata'''
 
         stage('Debug') {
           steps {
-            sh '''if [ls /jendata | grep hello-world.txt]
+            sh '''if ls /jendata | grep hello-world.txt
 then
   echo "success"
 else
