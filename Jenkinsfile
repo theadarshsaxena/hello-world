@@ -1,11 +1,26 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
-      steps {
-        echo 'sucess'
-        sh '''pwd
+    stage('CheckOut') {
+      parallel {
+        stage('CheckOut') {
+          steps {
+            sh '''pwd
 sudo cp -r -v -f * /jendata'''
+          }
+        }
+
+        stage('Debug') {
+          steps {
+            sh '''if [ls /jendata | grep hello-world.txt]
+then
+  echo "success"
+else
+  return 0
+fi'''
+          }
+        }
+
       }
     }
 
