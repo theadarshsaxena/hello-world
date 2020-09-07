@@ -36,7 +36,6 @@ else
 	sudo kubectl create -f /jendata/mypvc.yml
 fi
 
-sleep 30
 
 if sudo kubectl get svc | grep myserver
 then
@@ -46,7 +45,6 @@ else
         sudo kubectl create -f /jendata/svc.yml
 fi
 
-sleep 30
 
 if sudo kubectl get deployment | grep mywebdeploy
 then
@@ -54,7 +52,7 @@ then
 	sudo kubectl rollout restart deployment/mywebdeploy
 else
 	echo "creating deployment"
-	sudo kubectl create -f /jendata/Deployment.yml
+	sudo kubectl create -f /jendata/deployment.yml
 fi'''
       }
     }
