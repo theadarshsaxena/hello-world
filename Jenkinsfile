@@ -36,11 +36,15 @@ else
 	sudo kubectl create -f /webserver/mypvc.yml
 fi
 
+sleep 30
+
 if sudo kubectl get svc | grep myserver
 then
 	echo "Already present, hence changing conf"
 	sudo kubectl apply -f /webserver/svc.yml
 fi
+
+sleep 30
 
 if sudo kubectl get deployment | grep mywebdeploy
 then
