@@ -24,5 +24,11 @@ fi'''
       }
     }
 
+    stage('') {
+      steps {
+        echo 'Success'
+      }
+    }
+
   }
 }
