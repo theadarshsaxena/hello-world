@@ -30,10 +30,10 @@ fi'''
 then
 	echo "PVC already present"
 	echo "changing PVC"
-	sudo kubectl apply -f  /webserver/mypvc.yml
+	sudo kubectl apply -f  /jendata/mypvc.yml
 else
 	echo "Creating PVC"
-	sudo kubectl create -f /webserver/mypvc.yml
+	sudo kubectl create -f /jendata/mypvc.yml
 fi
 
 sleep 30
@@ -41,7 +41,9 @@ sleep 30
 if sudo kubectl get svc | grep myserver
 then
 	echo "Already present, hence changing conf"
-	sudo kubectl apply -f /webserver/svc.yml
+	sudo kubectl apply -f /jendata/svc.yml
+else
+        sudo kubectl create -f /jendata/svc.yml
 fi
 
 sleep 30
@@ -52,7 +54,7 @@ then
 	sudo kubectl rollout restart deployment/mywebdeploy
 else
 	echo "creating deployment"
-	sudo kubectl create -f /webserver/Deployment.yml
+	sudo kubectl create -f /jendata/Deployment.yml
 fi'''
       }
     }
