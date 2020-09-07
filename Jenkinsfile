@@ -57,22 +57,5 @@ fi'''
       }
     }
 
-    stage('Testing') {
-      steps {
-        sh '''status=$(curl -o /dev/null -s -w "%{http_code}" $(siteaddress))
-if ($status == 200)
-then
-    echo "everything running fine"
-    exit 0
-else
-    echo "problem found with error status code: $status"
-fi
-
-
-
-'''
-      }
-    }
-
   }
 }
