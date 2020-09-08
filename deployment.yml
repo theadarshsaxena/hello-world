@@ -30,4 +30,4 @@ spec:
       volumes:
       - name: httpd-volume
         persistentVolumeClaim:
-          claimName: httpd-pvc
+          claimName: my-httpd-pvc
