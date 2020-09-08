@@ -62,9 +62,7 @@ fi
     stage('Testing') {
       steps {
         sh '''cd /jendata
-sudo kubectl get services mywebdeploy > kubegetfile.txt
-cat kubegetfile.txt
-siteaddress=$(sudo awk \'/LoadBalancer/ {print $4":8080"}\' kubegetfile.txt)
+siteaddress=$(sudo kubectl get all | sudo awk \'/LoadBalancer/ {print $4":8080"}\')
 status=$(sudo curl -o /dev/null -s -w "%{http_code}" $(siteaddress))
 if $(status)==200
 then
