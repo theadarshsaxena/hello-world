@@ -49,7 +49,7 @@ fi
 
 sleep 10
 
-if sudo kubectl get svc | grep myserver
+if sudo kubectl get svc | grep mywebdeploy
 then
 	echo "Already present, hence changing conf"
 	sudo kubectl apply -f /jendata/svc.yml
