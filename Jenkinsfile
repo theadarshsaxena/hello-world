@@ -62,7 +62,7 @@ fi
     stage('Testing') {
       steps {
         sh '''cd /jendata
-status=$(sudo curl -o /dev/null -s -w "%{http_code}" $(sudo kubectl get all | sudo awk \'/LoadBalancer/ {print $4":8080"}\'))
+status=$(sudo curl -o /dev/null -s -w "%{http_code}" $(sudo kubectl get all | sudo awk \'/LoadBalancer/ {print $4}\'))
 if $(status)==200
 then
     echo "everything running file"
