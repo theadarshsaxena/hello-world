@@ -65,11 +65,12 @@ fi
 status=$(sudo curl -o /dev/null -s -w "%{http_code}" $(sudo kubectl get all | sudo awk \'/LoadBalancer/ {print $4}\'))
 if status==200
 then
-    echo "everything running file"
+    echo "everything running fine"
 else
-    echo "not file"
+    echo "not fine"
     exit 1
 fi'''
+        echo 'Everything fine'
       }
     }
 
