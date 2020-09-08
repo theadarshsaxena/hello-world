@@ -53,7 +53,7 @@ if sudo kubectl get svc | grep mywebdeploy
 then
 	echo "Already present"
 else
-        sudo kubectl expose deployment mywebdeploy
+        sudo kubectl expose deployment mywebdeploy --type=LoadBalancer
 fi
 
 sudo kubectl get services mywebdeploy > kubegetfile.txt'''
@@ -64,7 +64,7 @@ sudo kubectl get services mywebdeploy > kubegetfile.txt'''
       steps {
         sh '''siteaddress=$(awk \'/LoadBalancer/ {print $4":8080"}\' kubegetfile.txt)
 status=$(curl -o /dev/null -s -w "%{http_code}" $(siteaddress))
-if status==200
+if $(status)==200
 then
     echo "everything running file"
 else
