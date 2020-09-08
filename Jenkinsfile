@@ -5,6 +5,7 @@ pipeline {
       parallel {
         stage('CheckOut') {
           steps {
+            git(url: 'https://github.com/theadarshsaxena/hello-world', branch: 'master')
             sh '''pwd
 sudo cp -r -v -f * /jendata'''
           }
