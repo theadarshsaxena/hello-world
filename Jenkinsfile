@@ -57,5 +57,20 @@ fi'''
       }
     }
 
+    stage('Testing') {
+      steps {
+        sh '''kubectl get service > kubegetfile.txt
+siteaddress=$(awk \'/LoadBalancer/ {print $4":8080"}\' kubegetfile.txt)
+status=$(curl -o /dev/null -s -w "%{http_code}" $(siteaddress))
+if status==200
+then
+    echo "everything running file"
+else
+    echo "not file"
+    exit 1
+fi'''
+      }
+    }
+
   }
 }
