@@ -62,7 +62,7 @@ fi
 
     stage('Testing') {
       steps {
-        sh '''kubectl get service > kubegetfile.txt
+        sh '''kubectl get all > kubegetfile.txt
 siteaddress=$(awk \'/LoadBalancer/ {print $4":8080"}\' kubegetfile.txt)
 status=$(curl -o /dev/null -s -w "%{http_code}" $(siteaddress))
 if status==200
