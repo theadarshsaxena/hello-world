@@ -38,15 +38,6 @@ else
 fi
 
 
-if sudo kubectl get svc | grep myserver
-then
-	echo "Already present, hence changing conf"
-	sudo kubectl apply -f /jendata/svc.yml
-else
-        sudo kubectl create -f /jendata/svc.yml
-fi
-
-
 if sudo kubectl get deployment | grep mywebdeploy
 then
 	echo "Deployment already present, hence, rolling out"
@@ -54,7 +45,18 @@ then
 else
 	echo "creating deployment"
 	sudo kubectl create -f /jendata/deployment.yml
-fi'''
+fi
+
+sleep 10
+
+if sudo kubectl get svc | grep myserver
+then
+	echo "Already present, hence changing conf"
+	sudo kubectl apply -f /jendata/svc.yml
+else
+        sudo kubectl create -f /jendata/svc.yml
+fi
+'''
       }
     }
 
