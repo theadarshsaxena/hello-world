@@ -56,7 +56,7 @@ else
         sudo kubectl expose deployment mywebdeploy
 fi
 
-kubectl get all > kubegetfile.txt'''
+myfile=$(kubectl get all)'''
       }
     }
 
