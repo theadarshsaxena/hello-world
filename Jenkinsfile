@@ -52,7 +52,8 @@ fi
 
     stage('Testing') {
       steps {
-        sh '''cd /jendata
+        sh '''sleep 20
+cd /jendata
 status=$(sudo curl -o /dev/null -s -w "%{http_code}" $(sudo kubectl get all | sudo awk \'/LoadBalancer/ {print $4}\'))
 if status==200
 then
