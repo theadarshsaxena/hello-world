@@ -55,15 +55,16 @@ then
 else
         sudo kubectl expose deployment mywebdeploy --type=LoadBalancer
 fi
-
-sudo kubectl get services mywebdeploy > kubegetfile.txt'''
+'''
       }
     }
 
     stage('Testing') {
       steps {
-        sh '''siteaddress=$(awk \'/LoadBalancer/ {print $4":8080"}\' kubegetfile.txt)
-status=$(curl -o /dev/null -s -w "%{http_code}" $(siteaddress))
+        sh '''cd /jendata
+sudo kubectl get services mywebdeploy > kubegetfile.txt
+siteaddress=$(sudo awk \'/LoadBalancer/ {print $4":8080"}\' kubegetfile.txt)
+status=$(sudo curl -o /dev/null -s -w "%{http_code}" $(siteaddress))
 if $(status)==200
 then
     echo "everything running file"
