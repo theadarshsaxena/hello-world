@@ -51,19 +51,18 @@ sleep 10
 
 if sudo kubectl get svc | grep mywebdeploy
 then
-	echo "Already present, hence changing conf"
-	sudo kubectl apply -f /jendata/svc.yml
+	echo "Already present"
 else
-        sudo kubectl create -f /jendata/svc.yml
+        sudo kubectl expose deployment mywebdeploy
 fi
-'''
+
+kubectl get all > kubegetfile.txt'''
       }
     }
 
     stage('Testing') {
       steps {
-        sh '''kubectl get all > kubegetfile.txt
-siteaddress=$(awk \'/LoadBalancer/ {print $4":8080"}\' kubegetfile.txt)
+        sh '''siteaddress=$(awk \'/LoadBalancer/ {print $4":8080"}\' kubegetfile.txt)
 status=$(curl -o /dev/null -s -w "%{http_code}" $(siteaddress))
 if status==200
 then
