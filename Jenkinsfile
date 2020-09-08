@@ -56,7 +56,7 @@ else
         sudo kubectl expose deployment mywebdeploy
 fi
 
-myfile=$(kubectl get services mywebdeploy)'''
+kubectl get services mywebdeploy'''
       }
     }
 
